@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import {Container} from "@mui/material";
+import MemoPage from "./pages/MemoPage";
+import IntroPage from "./pages/IntroPage"; // IntroPage 컴포넌트를 임포트합니다.
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Container>
+            <Router>
+                <Routes>
+                    <Route path="/" element={<IntroPage />} />  {/* 기본 경로에 IntroPage를 렌더링합니다. */}
+                    <Route path="/memo" element={<MemoPage />} />  {/* /memo 경로에 MemoPage를 렌더링합니다. */}
+                </Routes>
+            </Router>
+        </Container>
+    );
 }
 
 export default App;
