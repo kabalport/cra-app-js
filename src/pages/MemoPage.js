@@ -32,6 +32,10 @@ const MemoPage = () => {
     }, [memos, isLoaded]); // 의존성 배열에 isLoaded를 추가했습니다.
 
     const handleAddMemo = () => {
+        if (newMemo.trim() === '') {
+            alert('Memo cannot be empty');
+            return;
+        }
         addMemo({ id: uuidv4(), content: newMemo });
         setNewMemo('');
     };

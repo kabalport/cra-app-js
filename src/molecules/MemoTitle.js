@@ -4,7 +4,7 @@ import { Typography } from '@mui/material';
 
 const MemoTitle = ({ title }) => {
     return (
-        <Typography variant="h1" component="h4" gutterBottom style={{textAlign: "center"}}>
+        <Typography variant="h3" component="h4" gutterBottom style={{textAlign: "center", marginTop: "50px"}}>
             {title}
         </Typography>
     );
