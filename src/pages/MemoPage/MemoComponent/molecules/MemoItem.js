@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../atoms/Button';
 import Input from '../atoms/Input';
-import useStore from '../stores/memoStore';
+import useStore from '../../MemoStores/memoStore';
 import {Checkbox} from "@mui/material";
 import {lightBlue} from "@mui/material/colors"; // 추가
 
@@ -16,10 +16,7 @@ const MemoItem = ({ content, id, onDelete, onUpdate }) => {
     };
 
     const toggleEditModeAndUpdate = (newContent) => {
-        if (!newContent.trim()) {
-            alert("Content cannot be empty!");
-            return;
-        }
+
         if (isEditing) {
             onUpdate(id, newContent);
             setEditingMemoId(null); // 추가

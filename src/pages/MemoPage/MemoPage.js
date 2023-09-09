@@ -1,8 +1,8 @@
 // MemoPage.js
 import React, { useEffect, useState } from "react";
-import useStore from "../stores/memoStore";
+import useStore from "./MemoStores/memoStore";
 import { v4 as uuidv4 } from "uuid";
-import MemoTemplate from "../templates/MemoTemplate";
+import MemoTemplate from "./MemoComponent/templates/MemoTemplate";
 
 const MemoPage = () => {
     const { memos, newMemo, isLoaded, setNewMemo, addMemo, deleteMemo, updateMemo, setMemos, setIsLoaded } = useStore();

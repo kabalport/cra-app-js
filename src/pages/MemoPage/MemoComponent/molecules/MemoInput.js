@@ -5,11 +5,11 @@ import {Container} from "@mui/material";
 
 const MemoInput = ({ value, onChange, onAdd}) => {
     const handleKeyPress = (e) => {
-        if (!value.trim()) {
-            alert("Content cannot be empty!");
-            return;
-        }
         if (e.key === 'Enter') {
+            if (!value.trim()) {
+                alert("Content cannot be empty!");
+                return;
+            }
             onAdd();
         }
     };
