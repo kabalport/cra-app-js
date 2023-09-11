@@ -13,7 +13,6 @@ const IntroPage = () => {
                 </Button>
             </Box>
             <Outlet />  {/* 하위 라우트가 여기에 렌더링됩니다. */}
-
         </Container>
     );
 };

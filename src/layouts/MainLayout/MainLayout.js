@@ -11,7 +11,7 @@ const MainLayout = () => {
             <MainHeader />
             <div style={{ display: 'flex' }}>
                 <MainSidebar />
-                <Container>
+                <Container style={{ flexGrow: 1 }}>
                     <Outlet />  {/* 자식 라우트 컴포넌트가 렌더링되는 위치 */}
                 </Container>
             </div>

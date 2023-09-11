@@ -1,5 +1,8 @@
 // routes.js
 import { lazy } from "react";
+import CounterPage from "./pages/CounterPage/CounterPage";
+import MainLayout from './layouts/MainLayout/MainLayout';
+import BasicLayout from './layouts/BasicLayout/BasicLayout';
 
 const IntroPage = lazy(() => import('./pages/MainPage/IntroPage'));
 const AboutPage = lazy(() => import('./pages/MainPage/AboutPage'));
@@ -11,23 +14,32 @@ const InternalServerErrorPage = lazy(() => import('./pages/InternalServerErrorPa
 export const HOME = "/";
 export const ABOUT = "/about";
 export const MEMO = "/memo";
+export const COUNTER = "/counter"
 export const NOT_FOUND = "*";
 export const UNAUTHORIZED = "/401";
 export const INTERNAL_SERVER_ERROR = "/500";
 
+// routes.js
 export const mainRoutes = [
     {
         path: HOME,
-        element: <IntroPage />,
-        // children: [
-        //     { path: 'about', element: <AboutPage /> }
-        // ]
+        label: "Home",  // 추가
+        element: <MainLayout />,
+        children: [
+            { path: '', element: <IntroPage />, label: "Intro" },  // 추가
+            { path: 'about', element: <AboutPage />, label: "About" }  // 추가
+        ]
     },
-    { path: ABOUT, element: <AboutPage /> },
 ];
 
+export const errorRoutePaths = [UNAUTHORIZED, INTERNAL_SERVER_ERROR];
+
 export const memoRoutes = [
-    { path: MEMO, element: <MemoPage /> },
+    { path: MEMO, label: "Memo", element: <MainLayout />, children: [{ path: '', element: <MemoPage /> }] },
+];
+
+export const counterRoutes= [
+    { path: COUNTER, label: "Counter", element: <MainLayout />, children: [{ path: '', element: <CounterPage /> }] }
 ];
 
 export const errorRoutes = [
@@ -36,3 +48,8 @@ export const errorRoutes = [
     { path: INTERNAL_SERVER_ERROR, element: <InternalServerErrorPage /> },
 ];
 
+export const allRoutes = [
+    ...mainRoutes,
+    ...memoRoutes,
+    ...counterRoutes,
+];
