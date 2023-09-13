@@ -3,6 +3,7 @@ import { lazy } from "react";
 import CounterPage from "./pages/CounterPage/CounterPage";
 import MainLayout from './layouts/MainLayout/MainLayout';
 import BasicLayout from './layouts/BasicLayout/BasicLayout';
+import ChatPage from "./pages/ChatPage/ChatPage";
 
 const IntroPage = lazy(() => import('./pages/MainPage/IntroPage'));
 const AboutPage = lazy(() => import('./pages/MainPage/AboutPage'));
@@ -42,6 +43,12 @@ export const counterRoutes= [
     { path: COUNTER, label: "Counter", element: <MainLayout />, children: [{ path: '', element: <CounterPage /> }] }
 ];
 
+export const chatgptRoutes= [
+    { path: "/chat", label: "Chat", element: <MainLayout />, children: [{ path: '', element: <ChatPage /> }] }
+];
+
+
+
 export const errorRoutes = [
     { path: NOT_FOUND, element: <NotFoundPage /> },
     { path: UNAUTHORIZED, element: <UnauthorizedPage /> },
@@ -52,4 +59,5 @@ export const allRoutes = [
     ...mainRoutes,
     ...memoRoutes,
     ...counterRoutes,
+    ...chatgptRoutes
 ];
