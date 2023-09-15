@@ -13,8 +13,8 @@ const Finetune = () => {
     const [jobDetails, setJobDetails] = useState(null);
     const [events, setEvents] = useState(null);
     const [cancelStatus, setCancelStatus] = useState(null);
-    const [eventsJobId, setEventsJobId] = useState('');
-    const [statusJobId, setStatusJobId] = useState('');
+    const [eventId, setEventId] = useState('');
+    const [cancelJobId, setCancelJobId] = useState('');
     // Fetch functions
     const fetchFromAPI = async (url, method, headers, body = null) => {
         const response = await fetch(url, {
@@ -26,9 +26,7 @@ const Finetune = () => {
     };
 
     const fetchJobDetails = async () => {
-        // const url = `https://api.openai.com/v1/fine_tuning/jobs/${jobId}`;
-        const url = `https://api.openai.com/v1/fine_tuning/jobs/${statusJobId}`;
-
+        const url = `https://api.openai.com/v1/fine_tuning/jobs/${jobId}`;
         const data = await fetchFromAPI(url, 'GET', {
             'Authorization': `Bearer ${apiKey}`,
         });
@@ -42,28 +40,29 @@ const Finetune = () => {
         });
         setJobList(data.data);
     };
-
     const cancelFineTuningJob = async () => {
-        const url = `https://api.openai.com/v1/fine_tuning/jobs/${jobId}/cancel`;
+        const url = `https://api.openai.com/v1/fine_tuning/jobs/${cancelJobId}/cancel`;
         const data = await fetchFromAPI(url, 'POST', {
             'Authorization': `Bearer ${apiKey}`,
         });
         if (data.status === 'cancelled') setCancelStatus('The fine-tuning job has been cancelled.');
     };
-
-
+    // const cancelFineTuningJob = async () => {
+    //     const url = `https://api.openai.com/v1/fine_tuning/jobs/${jobId}/cancel`;
+    //     const data = await fetchFromAPI(url, 'POST', {
+    //         'Authorization': `Bearer ${apiKey}`,
+    //     });
+    //     if (data.status === 'cancelled') setCancelStatus('The fine-tuning job has been cancelled.');
+    // };
     const fetchEvents = async () => {
-        const url = `https://api.openai.com/v1/fine_tuning/jobs/${eventsJobId}/events`;
+        const url = `https://api.openai.com/v1/fine_tuning/jobs/${eventId}/events`;
         const data = await fetchFromAPI(url, 'GET', {
             'Authorization': `Bearer ${apiKey}`,
         });
         setEvents(data.data);
     };
-
     // const fetchEvents = async () => {
-    //     // const url = `https://api.openai.com/v1/fine_tuning/jobs/${jobId}/events`;
-    //     const url = `https://api.openai.com/v1/fine_tuning/jobs/${eventsJobId}/events`;
-    //
+    //     const url = `https://api.openai.com/v1/fine_tuning/jobs/${jobId}/events`;
     //     const data = await fetchFromAPI(url, 'GET', {
     //         'Authorization': `Bearer ${apiKey}`,
     //     });
@@ -122,7 +121,15 @@ const Finetune = () => {
             ))}
 
             {/* Fine-Tuning Events */}
-            <Button variant="contained" color="primary" onClick={fetchEvents}>List Fine-Tuning Events</Button>
+            <input
+                type="text"
+                placeholder="Enter Fine-Tuning Event ID"
+                value={eventId}
+                onChange={(e) => setEventId(e.target.value)}
+            />
+            <Button variant="contained" color="primary" onClick={fetchEvents}>
+                List Fine-Tuning Events
+            </Button>
             {events && (
                 <div>
                     <h2>Fine-Tuning Events:</h2>
@@ -135,7 +142,15 @@ const Finetune = () => {
             )}
 
             {/* Cancel Fine-Tuning */}
-            <Button variant="contained" color="secondary" onClick={cancelFineTuningJob}>Cancel Fine-Tuning Job</Button>
+            <input
+                type="text"
+                placeholder="Enter Fine-Tuning Job ID to Cancel"
+                value={cancelJobId}
+                onChange={(e) => setCancelJobId(e.target.value)}
+            />
+            <Button variant="contained" color="secondary" onClick={cancelFineTuningJob}>
+                Cancel Fine-Tuning Job
+            </Button>
             {cancelStatus && <div><p>{cancelStatus}</p></div>}
 
             {/* Job Details */}
