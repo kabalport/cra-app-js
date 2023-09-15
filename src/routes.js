@@ -4,6 +4,7 @@ import CounterPage from "./pages/CounterPage/CounterPage";
 import MainLayout from './layouts/MainLayout/MainLayout';
 import BasicLayout from './layouts/BasicLayout/BasicLayout';
 import ChatPage from "./pages/ChatPage/ChatPage";
+import Finetune from "./pages/ChatPage/Finetune";
 
 const IntroPage = lazy(() => import('./pages/MainPage/IntroPage'));
 const AboutPage = lazy(() => import('./pages/MainPage/AboutPage'));
@@ -44,7 +45,8 @@ export const counterRoutes= [
 ];
 
 export const chatgptRoutes= [
-    { path: "/chat", label: "Chat", element: <MainLayout />, children: [{ path: '', element: <ChatPage /> }] }
+    { path: "/chat", label: "Chat", element: <MainLayout />, children: [{ path: '', element: <ChatPage /> }] },
+    { path: "/chat2", label: "Chat2", element: <MainLayout />, children: [{ path: '', element: <Finetune /> }] }
 ];
 
 
