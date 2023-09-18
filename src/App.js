@@ -1,12 +1,11 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Container } from '@mui/material';
 import CustomLoading from './components/Mui/atom/CustomLoading';
 import { allRoutes, errorRoutes } from './routes';  // 두 가지 라우트 배열을 import
 
 function App() {
     return (
-        <Container>
+
             <Router>
                 <Suspense fallback={<CustomLoading />}>
                     <Routes>
@@ -24,7 +23,7 @@ function App() {
                     </Routes>
                 </Suspense>
             </Router>
-        </Container>
+
     );
 }
 

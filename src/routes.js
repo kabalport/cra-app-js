@@ -5,6 +5,8 @@ import MainLayout from './layouts/MainLayout/MainLayout';
 import BasicLayout from './layouts/BasicLayout/BasicLayout';
 import ChatPage from "./pages/ChatPage/ChatPage";
 import Finetune from "./pages/ChatPage/Finetune";
+import TailwindPage from "./pages/TailwindPage/TailwindPage";
+import MuiPage from "./pages/MuiPage/MuiPage";
 
 const IntroPage = lazy(() => import('./pages/MainPage/IntroPage'));
 const AboutPage = lazy(() => import('./pages/MainPage/AboutPage'));
@@ -40,6 +42,15 @@ export const memoRoutes = [
     { path: MEMO, label: "Memo", element: <MainLayout />, children: [{ path: '', element: <MemoPage /> }] },
 ];
 
+export const tailwindRoutes = [
+    { path: "/tailwind", label: "Tailwind",  children: [{ path: '', element: <TailwindPage /> }] },
+];
+
+
+export const muiRoutes = [
+    { path: "/mui", label: "MUI",  children: [{ path: '', element: <MuiPage /> }] },
+];
+
 export const counterRoutes= [
     { path: COUNTER, label: "Counter", element: <MainLayout />, children: [{ path: '', element: <CounterPage /> }] }
 ];
@@ -61,5 +72,7 @@ export const allRoutes = [
     ...mainRoutes,
     ...memoRoutes,
     ...counterRoutes,
-    ...chatgptRoutes
+    ...chatgptRoutes,
+    ...muiRoutes,
+    ...tailwindRoutes
 ];
