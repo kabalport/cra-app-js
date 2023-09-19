@@ -7,6 +7,7 @@ import ChatPage from "./pages/ChatPage/ChatPage";
 import Finetune from "./pages/ChatPage/Finetune";
 import TailwindPage from "./pages/TailwindPage/TailwindPage";
 import MuiPage from "./pages/MuiPage/MuiPage";
+import SignIn from "./pages/MuiPage/SignIn";
 
 const IntroPage = lazy(() => import('./pages/MainPage/IntroPage'));
 const AboutPage = lazy(() => import('./pages/MainPage/AboutPage'));
@@ -49,6 +50,7 @@ export const tailwindRoutes = [
 
 export const muiRoutes = [
     { path: "/mui", label: "MUI",  children: [{ path: '', element: <MuiPage /> }] },
+    { path: "/signin", label: "MUI",  children: [{ path: '', element: <SignIn /> }] },
 ];
 
 export const counterRoutes= [
