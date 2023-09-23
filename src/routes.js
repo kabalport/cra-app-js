@@ -8,6 +8,8 @@ import Finetune from "./pages/ChatPage/Finetune";
 import TailwindPage from "./pages/TailwindPage/TailwindPage";
 import MuiPage from "./pages/MuiPage/MuiPage";
 import SignIn from "./pages/MuiPage/SignIn";
+import FortuneTeller from "./pages/FoutuneTellerPage/FortuneTeller";
+import ChatUI from "./pages/FoutuneTellerPage/ChatUI";
 
 const IntroPage = lazy(() => import('./pages/MainPage/IntroPage'));
 const AboutPage = lazy(() => import('./pages/MainPage/AboutPage'));
@@ -59,7 +61,9 @@ export const counterRoutes= [
 
 export const chatgptRoutes= [
     { path: "/chat", label: "Chat", element: <MainLayout />, children: [{ path: '', element: <ChatPage /> }] },
-    { path: "/chat2", label: "Chat2", element: <MainLayout />, children: [{ path: '', element: <Finetune /> }] }
+    { path: "/chat2", label: "Chat2", element: <MainLayout />, children: [{ path: '', element: <Finetune /> }] },
+    { path: "/chat3", label: "Chat2", element: <MainLayout />, children: [{ path: '', element: <FortuneTeller /> }] },
+    { path: "/chat4", label: "Chat2", element: <MainLayout />, children: [{ path: '', element: <ChatUI /> }] },
 ];
 
 
