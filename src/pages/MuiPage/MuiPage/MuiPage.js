@@ -31,6 +31,7 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 import muiTheme from "./muiTheme";
 import { Link } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
+import { NavLink } from 'react-router-dom';
 
 const MuiPage = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -132,7 +133,9 @@ const MuiPage = () => {
         <ThemeProvider theme={muiTheme}>
             <CssBaseline />
             <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-                <AppBar position="static">
+                <AppBar position="static"
+                        elevation={0} // 그림자를 제거합니다.
+                        sx={{ backgroundColor: muiTheme.palette.secondary.main, color: "#000000" }}>
                     <Toolbar>
                         {/* 왼쪽 영역 */}
                         <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
@@ -146,56 +149,43 @@ const MuiPage = () => {
                         >
                             <MenuIcon />
                         </IconButton>
-                        <Drawer open={drawerOpen} onClose={toggleDrawer(false)}>
+                        <Drawer
+                            PaperProps={{
+                                sx: {
+                                    backgroundColor: "#f8f8f8", // Light Gray
+                                    boxShadow: "3px 3px 10px rgba(0, 0, 0, 0.2)"
+                                }
+                            }}
+                            open={drawerOpen}
+                            onClose={toggleDrawer(false)}>
                             {list()}
                         </Drawer>
                         <Typography variant="h6" component="div" sx={{ flexGrow: 0.5 }}>
-                            News
+                            임시로고
                         </Typography>
                         </Box>
 
-                        {/* 가운데 영역 */}
-                        <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-                            {/* 모바일이 아닐 때만 Tab 컴포넌트를 보여줌 */}
-                            {!isMobile && (
-                                <Tabs
-                                    value={value}
-                                    onChange={handleChange}
-                                    aria-label="tabs"
-                                    variant={isMobile ? "scrollable" : "standard"}
-                                    scrollButtons="auto"
-                                    style={{
-                                        padding: 0,
-                                        margin: 0
-                                    }}
-                                    sx={{
-                                        "& .Mui-selected": {
-                                            color: "black",  // 활성화된 탭의 글자 색을 검은색으로 설정
-                                            borderBottom: "2px solid black"
-                                        },
-                                        "& .MuiTab-root": {  // 모든 탭에 적용될 스타일
-                                            '&:hover': {  // 마우스가 위에 있을 때
-                                                textDecoration: "underline",  // 밑줄 표시
-                                                fontWeight: "bold"  // 볼드 처리
-                                            }
-                                        }
-                                    }}
-                                >
-                                    <Tab label="Main" component={Link} to="/" />
-                                    <Tab label="About" component={Link} to="/about" />
-                                    <Tab label="Chat" component={Link} to="/chat" />
-                                    <Tab label="More" onClick={handleTabMenuOpen} />
-                                </Tabs>
 
-                            )}
+                        <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center' }}>
+                            <NavLink to="/mui" activeStyle={{ fontWeight: 'bold', color: 'blue' }}>
+                                <Button color="inherit">mui</Button>
+                            </NavLink>
+                            <NavLink to="/about" activeStyle={{ fontWeight: 'bold', color: 'blue' }}>
+                                <Button color="inherit">About</Button>
+                            </NavLink>
+                            <NavLink to="/chat" activeStyle={{ fontWeight: 'bold', color: 'blue' }}>
+                                <Button color="inherit">Chat</Button>
+                            </NavLink>
                         </Box>
+
 
                         {/* 오른쪽 영역 */}
                         <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
 
                             {/* 검색 아이콘 추가 */}
-                            <IconButton color="inherit">
-                                <SearchIcon />
+                            <IconButton color="inherit" sx={{ "&:hover": { backgroundColor: "rgba(0,0,0,0.1)" } }}>
+
+                            <SearchIcon />
                             </IconButton>
                         <Menu
                             anchorEl={tabAnchorEl}
@@ -245,20 +235,30 @@ const MuiPage = () => {
                 {/* Footer */}
                 <Box
                     component="footer"
-                    sx={{ py: 3, backgroundColor: "#f4f4f4", width: "100%" }}
+                    sx={{
+                        py: 3,
+                        backgroundColor: muiTheme.palette.primary.main,
+                        color: "#ffffff"
+                    }}
                 >
                     <Container maxWidth={isMobile ? "sm" : "md"}>
                         <Typography variant="body2" color="text.secondary" align="center">
                             © 2023 Your Company. All rights reserved.
                         </Typography>
-                        <Box mt={2} display="flex" justifyContent="center">
-                            <Button size="small" component={Link} to="/sitemap">
+                        <Box mt={2} display="flex" justifyContent="center" >
+                            <Button size="small" component={Link} to="/sitemap"
+                                    sx={{ color: "#000000" }} // 여기에 색상
+                            >
                                 Site Map
                             </Button>
-                            <Button size="small" component={Link} to="/privacy">
+                            <Button size="small" component={Link} to="/privacy"
+                                    sx={{ color: "#000000" }}
+                                 >
                                 Privacy Policy
                             </Button>
-                            <Button size="small" component={Link} to="/terms">
+                            <Button size="small" component={Link} to="/terms"
+                                    sx={{ color: "#000000" }}
+                            >
                                 Terms & Conditions
                             </Button>
                         </Box>

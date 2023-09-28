@@ -3,19 +3,30 @@ import {createTheme} from "@mui/material";
 const muiTheme = createTheme({
     palette: {
         primary: {
-            main: "#eacfcf"
+            main: "#ffffff" // 예: 진한 파란색
         },
         secondary: {
-            main: "#EEFD53"
+            main: "#FFC107" // 예: 강렬한 노란색
         },
         error: {
             main: "#DA1E28"
         }
     },
     typography: {
-        fontFamily: ["Noto Sans KR", "sans-serif", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue"].join(",")
+        fontFamily: [
+            "Montserrat",
+            "Arial",
+            "sans-serif"
+        ].join(","),
     },
     components: {
+        MuiTabs: {
+            styleOverrides: {
+                indicator: {
+                    display: 'none'
+                }
+            }
+        },
         MuiCssBaseline: {
             styleOverrides: {
                 "*": {

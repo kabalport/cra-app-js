@@ -6,10 +6,18 @@ import BasicLayout from './layouts/BasicLayout/BasicLayout';
 import ChatPage from "./pages/ChatPage/ChatPage";
 import Finetune from "./pages/ChatPage/Finetune";
 import TailwindPage from "./pages/TailwindPage/TailwindPage";
-import MuiPage from "./pages/MuiPage/MuiPage";
+import MuiPage from "./pages/MuiPage/MuiPage/MuiPage";
 import SignIn from "./pages/MuiPage/SignIn";
 import FortuneTeller from "./pages/FoutuneTellerPage/FortuneTeller";
 import ChatUI from "./pages/FoutuneTellerPage/ChatUI";
+import Dashboard from "./pages/MuiPage/Dashboard/Dashboard";
+import SignInSide from "./pages/MuiPage/SignInSide";
+import SignUp from "./pages/MuiPage/SignUp";
+import StickyFooter from "./pages/MuiPage/StickyFooter";
+import Pricing from "./pages/MuiPage/Pricing";
+import Album from "./pages/MuiPage/Album";
+import Checkout from "./pages/MuiPage/Checkout/Checkout";
+import Blog from "./pages/MuiPage/Blog/Blog";
 
 const IntroPage = lazy(() => import('./pages/MainPage/IntroPage'));
 const AboutPage = lazy(() => import('./pages/MainPage/AboutPage'));
@@ -51,8 +59,22 @@ export const tailwindRoutes = [
 
 
 export const muiRoutes = [
-    { path: "/mui", label: "MUI",  children: [{ path: '', element: <MuiPage /> }] },
-    { path: "/signin", label: "MUI",  children: [{ path: '', element: <SignIn /> }] },
+    { path: "/mui/", label: "MUI",
+        children:
+            [
+                { path: '', element: <MuiPage />},
+                { path: 'mui-signin', element: <SignIn />},
+                { path: 'mui-dashboard', element: <Dashboard />},
+                { path: 'signin', element: <SignInSide />},
+                { path: 'signup', element: <SignUp />},
+                { path: 'stickyfooter', element: <StickyFooter />},
+                { path: 'pricing', element: <Pricing />},
+                { path: 'album', element: <Album />},
+                { path: 'checkout', element: <Checkout />},
+                { path: 'blog', element: <Blog />},
+
+            ]
+    },
 ];
 
 export const counterRoutes= [
