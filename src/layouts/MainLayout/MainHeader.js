@@ -6,7 +6,7 @@ const MainHeader = () => {
         <AppBar position="static">
             <Toolbar>
                 <Typography variant="h6">
-                    My App
+                    My App2
                 </Typography>
             </Toolbar>
         </AppBar>
