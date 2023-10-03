@@ -5,7 +5,6 @@ import { allRoutes, errorRoutes } from './routes';  // 두 가지 라우트 배�
 
 function App() {
     return (
-
             <Router>
                 <Suspense fallback={<CustomLoading />}>
                     <Routes>

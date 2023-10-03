@@ -18,6 +18,8 @@ import Pricing from "./pages/MuiPage/Pricing";
 import Album from "./pages/MuiPage/Album";
 import Checkout from "./pages/MuiPage/Checkout/Checkout";
 import Blog from "./pages/MuiPage/Blog/Blog";
+import CounterApp from "./pages/PracticePage/CounterApp";
+import GptTest from "./pages/PracticePage/GptTest";
 
 const IntroPage = lazy(() => import('./pages/MainPage/IntroPage'));
 const AboutPage = lazy(() => import('./pages/MainPage/AboutPage'));
@@ -55,6 +57,18 @@ export const memoRoutes = [
 
 export const tailwindRoutes = [
     { path: "/tailwind", label: "Tailwind",  children: [{ path: '', element: <TailwindPage /> }] },
+];
+
+// routes.js
+export const practiceRoutes = [
+    {
+        path: HOME,
+        label: "Practice",  // 추가
+        children: [
+            { path: 'practice/counter', element: <CounterApp />, label: "Counter" },  // 추가
+            { path: 'practice/gptTest', element: <GptTest />, label: "GptTest" },  // 추가
+        ]
+    },
 ];
 
 
@@ -102,5 +116,6 @@ export const allRoutes = [
     ...counterRoutes,
     ...chatgptRoutes,
     ...muiRoutes,
-    ...tailwindRoutes
+    ...tailwindRoutes,
+    ...practiceRoutes
 ];
